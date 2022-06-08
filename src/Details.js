@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Component } from "react";
 import Carousel from "./Carousel";
+import ErrorBoundary from "./ErrorBoundary";
 
 class Details extends Component {
   // constructor(props) {
@@ -25,7 +26,8 @@ class Details extends Component {
       return <h2>Loading ...</h2>;
     }
 
-    const { name, animal, breed, city, state, description, images } = this.state;
+    const { name, animal, breed, city, state, description, images } =
+      this.state;
 
     return (
       <div className="details">
@@ -44,7 +46,11 @@ class Details extends Component {
 const WrappedDetails = () => {
   const params = useParams();
 
-  return <Details params={params} />;
+  return (
+    <ErrorBoundary>
+      <Details params={params} />;
+    </ErrorBoundary>
+  );
 };
 
 export default WrappedDetails;
