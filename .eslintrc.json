@@ -5,21 +5,26 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
   "rules": {
     "react/prop-types": 0, // disables requiring prop types
-    "react/react-in-jsx-scope": 0 // disables requiring React to be imported in jsx files
+    "react/react-in-jsx-scope": 0, // disables requiring React to be imported in jsx files
+    "@typescript-eslint/no-empty-function": 0
   },
   "plugins": [
     "react",
     "import",
     "jsx-a11y",
-    "react-hooks"
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
+    "project": ["./tsconfig.json"],
     "ecmaFeatures": {
       "jsx": true
     }
@@ -32,6 +37,17 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/parsers": { // here we telling eslint which parsers to use for TS files
+      "@typescript-eslint/parser": [
+        ".ts",
+        ",tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
     }
   }
 }
