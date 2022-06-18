@@ -4,21 +4,33 @@ import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 import Modal from "./Modal";
+import { Animal, PetAPIResponses } from "./APIResponsesTypes";
 
-class Details extends Component {
+class Details extends Component<{ params: { id?: string } }> {
   // constructor(props) {
   //   super(props);
 
   //   this.state = { loading: true };
   // }
 
-  state = { loading: true, showModal: false };
+  state = {
+    loading: true,
+    showModal: false,
+    animal: "" as Animal,
+    name: "",
+    description: "",
+    breed: "",
+    images: [] as string[],
+    city: "",
+    state: "",
+  };
 
   async componentDidMount() {
+    if (!this.props.params.id) return;
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
     );
-    const data = await res.json();
+    const data = (await res.json()) as PetAPIResponses;
 
     this.setState({ loading: false, ...data.pets[0] });
   }
@@ -68,7 +80,7 @@ class Details extends Component {
 }
 
 const WrappedDetails = () => {
-  const params = useParams();
+  const params = useParams<{ id:  string }>();
 
   return (
     <ErrorBoundary>

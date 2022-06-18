@@ -41,7 +41,7 @@
     "import/parsers": { // here we telling eslint which parsers to use for TS files
       "@typescript-eslint/parser": [
         ".ts",
-        ",tsx"
+        ".tsx"
       ]
     },
     "import/resolver": {
