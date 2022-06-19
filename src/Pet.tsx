@@ -1,6 +1,23 @@
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
-const Pet = ({ name, animal, breed, images, location, id }) => {
+interface Props {
+  name: string;
+  animal: string;
+  breed: string;
+  images: string[];
+  location: string;
+  id: number;
+}
+
+const Pet: FunctionComponent<Props> = ({
+  name,
+  animal,
+  breed,
+  images,
+  location,
+  id,
+}) => {
   let hero = "http://pet-images.dev-apis.com/pets/none.jpg";
 
   if (images.length) {
