@@ -80,7 +80,7 @@ class Details extends Component<{ params: { id?: string } }> {
 }
 
 const WrappedDetails = () => {
-  const params = useParams<{ id:  string }>();
+  const params = useParams<{ id: string }>();
 
   return (
     <ErrorBoundary>

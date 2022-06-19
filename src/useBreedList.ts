@@ -17,7 +17,7 @@ export default function useBreedList(animal: Animal) {
     } else if (localCache[animal]) {
       setBreedList(localCache[animal]);
     } else {
-      requestBreedList();
+      void requestBreedList();
     }
 
     async function requestBreedList() {

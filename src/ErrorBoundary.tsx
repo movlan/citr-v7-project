@@ -2,7 +2,7 @@ import { Component, ErrorInfo } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 export default class ErrorBoundary extends Component {
-  state = { hasError: false,  redirect: false};
+  state = { hasError: false, redirect: false };
   static getDerivedStateFromError() {
     return { hasError: true };
   }

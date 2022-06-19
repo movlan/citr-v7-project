@@ -1,4 +1,9 @@
-import React, { useEffect, useState, useContext, FunctionComponent } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  FunctionComponent,
+} from "react";
 import Results from "./Results";
 import ThemeContext from "./ThemeContext";
 import useBreedList from "./useBreedList";
@@ -15,9 +20,8 @@ const SearchParams: FunctionComponent = () => {
   const [theme, setTheme] = useContext(ThemeContext);
 
   useEffect(() => {
-    requestPets();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void requestPets();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function requestPets() {
     const res = await fetch(
@@ -33,7 +37,7 @@ const SearchParams: FunctionComponent = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          requestPets();
+          void requestPets();
         }}
       >
         <label htmlFor="location">

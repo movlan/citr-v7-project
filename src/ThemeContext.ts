@@ -1,5 +1,8 @@
-import { createContext } from "react"; 
+import { createContext } from "react";
 
-const ThemeContext = createContext<[string, (theme: string) => void]>(['brown', () => {}])
+const ThemeContext = createContext<[string, (theme: string) => void]>([
+  "brown",
+  () => {},
+]);
 
 export default ThemeContext;
