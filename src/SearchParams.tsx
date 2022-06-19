@@ -1,16 +1,17 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, FunctionComponent } from "react";
 import Results from "./Results";
 import ThemeContext from "./ThemeContext";
 import useBreedList from "./useBreedList";
+import { Animal, Pet, PetAPIResponse } from "./APIResponsesTypes";
 
-const ANIMALS = ["bird", "dog", "cat", "rabbit", "reptile"];
+const ANIMALS: Animal[] = ["bird", "dog", "cat", "rabbit", "reptile"];
 
-const SearchParams = () => {
+const SearchParams: FunctionComponent = () => {
   const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("");
+  const [animal, setAnimal] = useState("" as Animal);
   const [breed, setBreed] = useState("");
   const [breeds] = useBreedList(animal);
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState([] as Pet[]);
   const [theme, setTheme] = useContext(ThemeContext);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const SearchParams = () => {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
-    const data = await res.json();
+    const data = (await res.json()) as PetAPIResponse;
 
     setPets(data.pets);
   }
@@ -50,11 +51,11 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => {
-              setAnimal(e.target.value);
+              setAnimal(e.target.value as Animal);
               setBreed("");
             }}
             onBlur={(e) => {
-              setAnimal(e.target.value);
+              setAnimal(e.target.value as Animal);
               setBreed("");
             }}
           >

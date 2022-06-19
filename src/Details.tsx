@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 import Modal from "./Modal";
-import { Animal, PetAPIResponses } from "./APIResponsesTypes";
+import { Animal, PetAPIResponse } from "./APIResponsesTypes";
 
 class Details extends Component<{ params: { id?: string } }> {
   // constructor(props) {
@@ -30,7 +30,7 @@ class Details extends Component<{ params: { id?: string } }> {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
     );
-    const data = (await res.json()) as PetAPIResponses;
+    const data = (await res.json()) as PetAPIResponse;
 
     this.setState({ loading: false, ...data.pets[0] });
   }

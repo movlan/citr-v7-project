@@ -11,7 +11,7 @@ export interface Pet {
   state: string;
 }
 
-export interface PetAPIResponses {
+export interface PetAPIResponse {
   numberOfResults: number;
   startIndex: number;
   endIndex: number;
