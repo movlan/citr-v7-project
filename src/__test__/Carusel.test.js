@@ -4,9 +4,10 @@
 
 import { expect, test } from "@jest/globals";
 import { render } from "@testing-library/react";
-import Carousel from "../Carousel.js";
 
-test("lets users click on thumbnails to make them the hero", async () => {
+import Carousel from "../Carousel";
+
+test("lets user click on thumbnails to make them the hero image", async () => {
   const images = ["0.jpg", "1.jpg", "2.jpg", "3.jpg"];
   const carousel = render(<Carousel images={images} />);
 
@@ -16,7 +17,7 @@ test("lets users click on thumbnails to make them the hero", async () => {
   for (let i = 0; i < images.length; i++) {
     const image = images[i];
 
-    const thumb = await carousel.findByTestId(`thumbnail${i}`);
+    const thumb = await carousel.findByTestId(`thumbnail-${i}`);
     thumb.click();
 
     expect(hero.src).toContain(image);

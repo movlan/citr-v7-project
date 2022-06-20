@@ -9,9 +9,9 @@ export default class Carousel extends Component {
 
   handleIndexClick = (e) => {
     this.setState({
-      active: +e.target.dataset.index
-    })
-  }
+      active: +e.target.dataset.index,
+    });
+  };
 
   render() {
     const { active } = this.state;
@@ -19,7 +19,7 @@ export default class Carousel extends Component {
 
     return (
       <div className="carousel">
-        <img src={images[active]} alt="animal" />
+        <img src={images[active]} alt="animal" data-testid="hero" />
         <div className="carousel-smaller">
           {images.map((photo, idx) => (
             // eslint-disable-next-line
@@ -30,6 +30,7 @@ export default class Carousel extends Component {
               data-index={idx}
               className={idx === active ? "active" : ""}
               alt="animal thumbnail"
+              data-testid={`thumbnail-${idx}`}
             />
           ))}
         </div>

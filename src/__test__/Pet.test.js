@@ -5,9 +5,9 @@
 import { expect, test } from "@jest/globals";
 import { render } from "@testing-library/react";
 import { StaticRouter } from "react-router-dom/server";
-import Pet from "../Pet.js";
+import Pet from "../Pet";
 
-test("displays a default thumbnail", async () => {
+test("displays a default thumbnails", async () => {
   const pet = render(
     <StaticRouter>
       <Pet />
@@ -18,10 +18,10 @@ test("displays a default thumbnail", async () => {
   expect(petThumbnail.src).toContain("none.jpg");
 });
 
-test("displays a non-default thumbnail", async () => {
+test("displays a non-default thumbnails", async () => {
   const pet = render(
     <StaticRouter>
-      <Pet images={["1.jpg", "2.jpg", "3.jpg"]} />
+      <Pet images={["1.jpg", "2.png", "3.webm"]} />
     </StaticRouter>
   );
 
